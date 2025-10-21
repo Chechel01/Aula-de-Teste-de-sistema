@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Produtos</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <div id="loginPage" class="login-container">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit" style="width: 100%;">Entrar</button>
+            <div class="links">
+                <button type="button" class="link-button" onclick="showForgotPassword()">Esqueci minha senha</button>
+                <button type="button" class="link-button" onclick="showRegister()">Criar nova conta</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="registerPage" class="register-container hidden">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Criar Conta</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="regName">Nome:</label>
+                <input type="text" id="regName" required>
+            </div>
+            <div class="form-group">
+                <label for="regEmail">Email:</label>
+                <input type="email" id="regEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="regPassword">Senha:</label>
+                <input type="password" id="regPassword" required>
+            </div>
+            <div class="form-group">
+                <label for="regConfirmPassword">Confirmar Senha:</label>
+                <input type="password" id="regConfirmPassword" required>
+            </div>
+            <button type="submit" style="width: 100%;">Cadastrar</button>
+            <div class="links">
+                <button type="button" class="link-button" onclick="showLogin()">Voltar para login</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="forgotPasswordPage" class="forgot-container hidden">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Recuperar Senha</h2>
+        <form id="forgotPasswordForm">
+            <div class="form-group">
+                <label for="forgotEmail">Email:</label>
+                <input type="email" id="forgotEmail" required>
+            </div>
+            <button type="submit" style="width: 100%;">Enviar link de recuperação</button>
+            <div class="links">
+                <button type="button" class="link-button" onclick="showLogin()">Voltar para login</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="dashboardPage" class="hidden">
+        <div class="nav-menu">
+            <h1>Sistema de Produtos</h1>
+            <div class="user-actions">
+                <span id="userEmail"></span>
+                <button onclick="logout()">Sair</button>
+            </div>
+        </div>
+
+        <div class="dashboard">
+            <div class="menu-grid">
+                <div class="menu-card" onclick="showProductForm()">
+                    <h3>Cadastrar Produto</h3>
+                    <p>Adicionar novo produto ao sistema</p>
+                </div>
+                <div class="menu-card" onclick="showProductList()">
+                    <h3>Listar Produtos</h3>
+                    <p>Visualizar e gerenciar produtos</p>
+                </div>
+            </div>
+
+            <div id="productFormCard" class="card hidden">
+                <h2>Cadastro de Produto</h2>
+                <form id="productForm">
+                    <input type="hidden" id="productId">
+                    <div class="form-group">
+                        <label for="productName">Nome do Produto:</label>
+                        <input type="text" id="productName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productPrice">Preço:</label>
+                        <input type="number" id="productPrice" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productQuantity">Quantidade:</label>
+                        <input type="number" id="productQuantity" required>
+                    </div>
+                    <button type="submit">Salvar Produto</button>
+                    <button type="button" onclick="hideProductForm()">Cancelar</button>
+                </form>
+            </div>
+
+            <div id="productListCard" class="card hidden">
+                <h2>Lista de Produtos</h2>
+                <table class="product-list">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Preço</th>
+                            <th>Quantidade</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
